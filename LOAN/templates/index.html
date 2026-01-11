@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>🏦 Loan Approval Prediction</h1>
+    <p class="subtitle">Check your loan eligibility instantly</p>
+
+    <form action="/predict" method="post">
+
+        <div class="row">
+            <div class="input-group">
+                <label>Gender</label>
+                <select name="Gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Married</label>
+                <select name="Married" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>Education</label>
+                <select name="Education" required>
+                    <option value="Graduate">Graduate</option>
+                    <option value="Not Graduate">Not Graduate</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Self Employed</label>
+                <select name="Self_Employed" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>Dependents</label>
+                <select name="Dependents" required>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3+">3+</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Property Area</label>
+                <select name="Property_Area" required>
+                    <option value="Rural">Rural</option>
+                    <option value="Semiurban">Semiurban</option>
+                    <option value="Urban">Urban</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>Applicant Income</label>
+                <input type="number" name="ApplicantIncome" required>
+            </div>
+
+            <div class="input-group">
+                <label>Coapplicant Income</label>
+                <input type="number" name="CoapplicantIncome" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group">
+                <label>Loan Amount</label>
+                <input type="number" name="LoanAmount" required>
+            </div>
+
+            <div class="input-group">
+                <label>Loan Amount Term</label>
+                <input type="number" name="Loan_Amount_Term" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group full">
+                <label>Credit History</label>
+                <select name="Credit_History" required>
+                    <option value="1">Good (1)</option>
+                    <option value="0">Bad (0)</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Predict Loan Status</button>
+
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
